@@ -143,6 +143,20 @@
         input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
         }
+        .add-workout-btn {
+            background-color: #475569;
+            color: #cbd5e1;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 20px;
+            line-height: 28px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .add-workout-btn:hover {
+             background-color: #64748b;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start p-4 antialiased">
@@ -229,72 +243,22 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     <!-- Mattina -->
                     <div class="workout-section hoverable-section">
-                        <h3 class="text-lg md:text-xl font-semibold text-cyan-400 mb-4">Mattina</h3>
-                        <div class="flex flex-col gap-4">
-                            <div>
-                                <label for="morning-type" class="block text-sm font-medium text-slate-400 mb-1">Tipo</label>
-                                <select id="morning-type" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none">
-                                    <option value="BOAT">BOAT</option>
-                                    <option value="BIKE">BIKE</option>
-                                    <option value="ERGO">ERGO</option>
-                                </select>
-                            </div>
-                            <div class="grid grid-cols-3 gap-3">
-                                <div>
-                                    <label for="morning-distance" class="block text-sm font-medium text-slate-400 mb-1">Distanza</label>
-                                    <input type="text" id="morning-distance" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none">
-                                </div>
-                                <div>
-                                    <label for="morning-series" class="block text-sm font-medium text-slate-400 mb-1">Serie</label>
-                                    <input type="text" id="morning-series" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none">
-                                </div>
-                                <div>
-                                    <label for="morning-intensity" class="block text-sm font-medium text-slate-400 mb-1">Intensità</label>
-                                    <div class="relative">
-                                        <input type="number" id="morning-intensity" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 pr-6 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none">
-                                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="morning-notes" class="block text-sm font-medium text-slate-400 mb-1">Note Lavoro</label>
-                                <textarea id="morning-notes" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none"></textarea>
-                            </div>
+                        <div class="flex justify-between items-center mb-4">
+                           <h3 class="text-lg md:text-xl font-semibold text-cyan-400">Mattina</h3>
+                           <button id="add-morning-workout" class="add-workout-btn">+</button>
+                        </div>
+                        <div id="morning-workouts-container" class="flex flex-col gap-6">
+                            <!-- Blocchi allenamento dinamici -->
                         </div>
                     </div>
                     <!-- Pomeriggio -->
                     <div class="workout-section hoverable-section">
-                        <h3 class="text-lg md:text-xl font-semibold text-amber-400 mb-4">Pomeriggio</h3>
-                        <div class="flex flex-col gap-4">
-                             <div>
-                                <label for="afternoon-type" class="block text-sm font-medium text-slate-400 mb-1">Tipo</label>
-                                <select id="afternoon-type" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none">
-                                    <option value="BOAT">BOAT</option>
-                                    <option value="BIKE">BIKE</option>
-                                    <option value="ERGO">ERGO</option>
-                                </select>
-                            </div>
-                            <div class="grid grid-cols-3 gap-3">
-                                <div>
-                                    <label for="afternoon-distance" class="block text-sm font-medium text-slate-400 mb-1">Distanza</label>
-                                    <input type="text" id="afternoon-distance" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none">
-                                </div>
-                                <div>
-                                    <label for="afternoon-series" class="block text-sm font-medium text-slate-400 mb-1">Serie</label>
-                                    <input type="text" id="afternoon-series" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none">
-                                </div>
-                                 <div>
-                                    <label for="afternoon-intensity" class="block text-sm font-medium text-slate-400 mb-1">Intensità</label>
-                                    <div class="relative">
-                                        <input type="number" id="afternoon-intensity" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 pr-6 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none">
-                                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="afternoon-notes" class="block text-sm font-medium text-slate-400 mb-1">Note Lavoro</label>
-                                <textarea id="afternoon-notes" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"></textarea>
-                            </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg md:text-xl font-semibold text-amber-400">Pomeriggio</h3>
+                            <button id="add-afternoon-workout" class="add-workout-btn">+</button>
+                        </div>
+                        <div id="afternoon-workouts-container" class="flex flex-col gap-6">
+                            <!-- Blocchi allenamento dinamici -->
                         </div>
                     </div>
                 </div>
@@ -317,11 +281,8 @@
                 <h3 id="popup-title" class="text-xl font-bold"></h3>
                 <button id="close-popup" class="text-2xl text-slate-400 hover:text-white">&times;</button>
             </div>
-            <div>
-                <h4 class="text-sm font-medium text-slate-400 mb-1">Lavoro</h4>
-                <p id="popup-work" class="bg-slate-900 p-3 rounded-md mb-4 min-h-[40px]"></p>
-                <h4 class="text-sm font-medium text-slate-400 mb-1">Note</h4>
-                <p id="popup-notes" class="bg-slate-900 p-3 rounded-md whitespace-pre-wrap min-h-[60px]"></p>
+            <div id="popup-body" class="max-h-[60vh] overflow-y-auto pr-2">
+                <!-- Contenuto dinamico del popup -->
             </div>
         </div>
     </div>
@@ -379,8 +340,10 @@
         const dataEntryForm = document.getElementById('data-entry-form');
         const selectedDateDisplay = document.getElementById('selected-date-display');
         const saveDataBtn = document.getElementById('save-data');
-        const morningTypeInput = document.getElementById('morning-type'), morningDistanceInput = document.getElementById('morning-distance'), morningSeriesInput = document.getElementById('morning-series'), morningIntensityInput = document.getElementById('morning-intensity'), morningNotesInput = document.getElementById('morning-notes');
-        const afternoonTypeInput = document.getElementById('afternoon-type'), afternoonDistanceInput = document.getElementById('afternoon-distance'), afternoonSeriesInput = document.getElementById('afternoon-series'), afternoonIntensityInput = document.getElementById('afternoon-intensity'), afternoonNotesInput = document.getElementById('afternoon-notes');
+        const morningWorkoutsContainer = document.getElementById('morning-workouts-container');
+        const afternoonWorkoutsContainer = document.getElementById('afternoon-workouts-container');
+        const addMorningWorkoutBtn = document.getElementById('add-morning-workout');
+        const addAfternoonWorkoutBtn = document.getElementById('add-afternoon-workout');
         // Intensity Range Form
         const intensityRangeForm = document.getElementById('intensity-range-form');
         const toggleIntensityForm = document.getElementById('toggle-intensity-form');
@@ -395,7 +358,7 @@
         const cancelEditRangeBtn = document.getElementById('cancel-edit-range');
         // Popups, Banners and Counters
         const notificationEl = document.getElementById('notification');
-        const workoutPopup = document.getElementById('workout-popup'), popupContent = document.getElementById('popup-content'), closePopupBtn = document.getElementById('close-popup'), popupTitle = document.getElementById('popup-title'), popupWork = document.getElementById('popup-work'), popupNotes = document.getElementById('popup-notes');
+        const workoutPopup = document.getElementById('workout-popup'), popupContent = document.getElementById('popup-content'), closePopupBtn = document.getElementById('close-popup'), popupTitle = document.getElementById('popup-title'), popupBody = document.getElementById('popup-body');
         const unsavedBanner = document.getElementById('unsaved-banner'), bannerSaveBtn = document.getElementById('banner-save'), bannerDiscardBtn = document.getElementById('banner-discard');
         const confirmDeleteModal = document.getElementById('confirm-delete-modal'), modalConfirmDeleteBtn = document.getElementById('modal-confirm-delete'), modalCancelDeleteBtn = document.getElementById('modal-cancel-delete');
         const readsCounterElement = document.getElementById('reads-counter');
@@ -518,12 +481,10 @@
                 
                 const dayData = eventsData[dateStr];
                 if (dayData) {
-                    const morningWork = dayData.mattina?.lavoro;
-                    if (morningWork?.distanza || morningWork?.serie || morningWork?.intensita) {
+                    if (dayData.mattina && Array.isArray(dayData.mattina) && dayData.mattina.some(w => w.lavoro.distanza || w.lavoro.serie || w.lavoro.intensita || w.lavoro.scheda)) {
                         eventsContainer.appendChild(createEventElement('Mattina', dayData.mattina, 'cyan'));
                     }
-                    const afternoonWork = dayData.pomeriggio?.lavoro;
-                    if (afternoonWork?.distanza || afternoonWork?.serie || afternoonWork?.intensita) {
+                    if (dayData.pomeriggio && Array.isArray(dayData.pomeriggio) && dayData.pomeriggio.some(w => w.lavoro.distanza || w.lavoro.serie || w.lavoro.intensita || w.lavoro.scheda)) {
                        eventsContainer.appendChild(createEventElement('Pomeriggio', dayData.pomeriggio, 'amber'));
                     }
                 }
@@ -563,18 +524,10 @@
             
             closeIntensityForm();
 
+            // Populate form with dynamic blocks
             const docData = eventsData[selectedDate] || {};
-            morningTypeInput.value = docData.mattina?.tipo || 'BOAT';
-            morningDistanceInput.value = docData.mattina?.lavoro?.distanza || '';
-            morningSeriesInput.value = docData.mattina?.lavoro?.serie || '';
-            morningIntensityInput.value = docData.mattina?.lavoro?.intensita || '';
-            morningNotesInput.value = docData.mattina?.note || '';
-            
-            afternoonTypeInput.value = docData.pomeriggio?.tipo || 'BOAT';
-            afternoonDistanceInput.value = docData.pomeriggio?.lavoro?.distanza || '';
-            afternoonSeriesInput.value = docData.pomeriggio?.lavoro?.serie || '';
-            afternoonIntensityInput.value = docData.pomeriggio?.lavoro?.intensita || '';
-            afternoonNotesInput.value = docData.pomeriggio?.note || '';
+            populateWorkoutBlocks('morning', docData.mattina || []);
+            populateWorkoutBlocks('afternoon', docData.pomeriggio || []);
             
             dataEntryForm.scrollIntoView({ behavior: 'smooth', block: 'end' });
             hasUnsavedChanges = false;
@@ -582,10 +535,15 @@
 
         async function saveWorkoutData() {
             if (!selectedDate) return;
+            
+            const morningWorkouts = getWorkoutsFromContainer(morningWorkoutsContainer);
+            const afternoonWorkouts = getWorkoutsFromContainer(afternoonWorkoutsContainer);
+
             const dataToSave = {
-                mattina: { tipo: morningTypeInput.value, lavoro: { distanza: morningDistanceInput.value, serie: morningSeriesInput.value, intensita: morningIntensityInput.value }, note: morningNotesInput.value },
-                pomeriggio: { tipo: afternoonTypeInput.value, lavoro: { distanza: afternoonDistanceInput.value, serie: afternoonSeriesInput.value, intensita: afternoonIntensityInput.value }, note: afternoonNotesInput.value }
+                mattina: morningWorkouts,
+                pomeriggio: afternoonWorkouts,
             };
+
             try {
                 await setDoc(doc(db, currentCollection, selectedDate), dataToSave, { merge: true });
                 hasUnsavedChanges = false;
@@ -613,12 +571,10 @@
 
             try {
                 if (editingRangeId) {
-                    // Update existing range
                     const rangeDocRef = doc(db, rangesCollectionName, editingRangeId);
                     await updateDoc(rangeDocRef, dataToSave);
                     showNotification('Periodo di intensità aggiornato!');
                 } else {
-                    // Add new range
                     const rangesSnapshot = await getDocs(collection(db, rangesCollectionName));
                     const colorIndex = rangesSnapshot.size % rangeColors.length;
                     dataToSave.color = rangeColors[colorIndex];
@@ -641,6 +597,118 @@
             setTimeout(() => {
                 notificationEl.classList.add('opacity-0', 'translate-y-2');
             }, 3000);
+        }
+
+        // --- Dynamic Workout Blocks ---
+
+        function createWorkoutBlockHTML(data = {}) {
+            const isGym = data.tipo === 'GYM';
+            const standardFieldsDisplay = isGym ? 'hidden' : '';
+            const gymFieldsDisplay = isGym ? '' : 'hidden';
+            const schedaValue = data.lavoro?.scheda || 'Scheda 1';
+
+            const uniqueId = `workout-${Date.now()}-${Math.random()}`;
+            return `
+                <div class="workout-block border-t border-slate-700 pt-4" id="${uniqueId}">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex justify-between items-center">
+                             <select class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none workout-type">
+                                <option value="BOAT" ${data.tipo === 'BOAT' ? 'selected' : ''}>BOAT</option>
+                                <option value="BIKE" ${data.tipo === 'BIKE' ? 'selected' : ''}>BIKE</option>
+                                <option value="ERGO" ${data.tipo === 'ERGO' ? 'selected' : ''}>ERGO</option>
+                                <option value="GYM" ${data.tipo === 'GYM' ? 'selected' : ''}>GYM</option>
+                            </select>
+                            <button class="remove-workout-btn text-red-500 hover:text-red-400 ml-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+
+                        <div class="workout-fields">
+                            <div class="standard-fields grid grid-cols-3 gap-3 ${standardFieldsDisplay}">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-400 mb-1">Distanza</label>
+                                    <input type="text" value="${data.lavoro?.distanza || ''}" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none workout-distance">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-400 mb-1">Serie</label>
+                                    <input type="text" value="${data.lavoro?.serie || ''}" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none workout-series">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-400 mb-1">Intensità</label>
+                                    <div class="relative">
+                                        <input type="number" value="${data.lavoro?.intensita || ''}" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 pr-6 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none workout-intensity">
+                                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gym-fields ${gymFieldsDisplay}">
+                                <label class="block text-sm font-medium text-slate-400 mb-1">Scheda Palestra</label>
+                                <select class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none workout-scheda">
+                                    ${[1,2,3,4,5,6].map(i => `<option value="Scheda ${i}" ${schedaValue === `Scheda ${i}` ? 'selected' : ''}>Scheda ${i}</option>`).join('')}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Note Lavoro</label>
+                            <textarea rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none workout-notes">${data.note || ''}</textarea>
+                        </div>
+                    </div>
+                </div>`;
+        }
+        
+        function addWorkoutBlock(container) {
+            const newBlockHTML = createWorkoutBlockHTML();
+            container.insertAdjacentHTML('beforeend', newBlockHTML);
+        }
+
+        function populateWorkoutBlocks(session, workouts) {
+            const container = session === 'morning' ? morningWorkoutsContainer : afternoonWorkoutsContainer;
+            container.innerHTML = '';
+            if (workouts && workouts.length > 0) {
+                workouts.forEach(workoutData => {
+                    container.insertAdjacentHTML('beforeend', createWorkoutBlockHTML(workoutData));
+                });
+            } else {
+                addWorkoutBlock(container); // Add one empty block if none exist
+            }
+        }
+
+        function getWorkoutsFromContainer(container) {
+            const workouts = [];
+            container.querySelectorAll('.workout-block').forEach(block => {
+                const type = block.querySelector('.workout-type').value;
+                const notes = block.querySelector('.workout-notes').value;
+                let lavoro = {};
+                let hasData = false;
+
+                if (type === 'GYM') {
+                    const scheda = block.querySelector('.workout-scheda').value;
+                    lavoro = { scheda: scheda };
+                    hasData = true; 
+                } else {
+                    const distance = block.querySelector('.workout-distance').value;
+                    const series = block.querySelector('.workout-series').value;
+                    const intensity = block.querySelector('.workout-intensity').value;
+                    lavoro = {
+                        distanza: distance,
+                        serie: series,
+                        intensita: intensity
+                    };
+                    if (distance || series || intensity) {
+                        hasData = true;
+                    }
+                }
+                
+                if (hasData || notes) {
+                     workouts.push({
+                        tipo: type,
+                        lavoro: lavoro,
+                        note: notes
+                    });
+                }
+            });
+            return workouts;
         }
 
         // --- Intensity Form Management ---
@@ -713,18 +781,34 @@
 
         // --- Popup Logic ---
         function showWorkoutPopup(title, data, color) {
-            const workType = data.tipo || '';
-            popupTitle.textContent = `${title} ${workType ? `- ${workType}`: ''}`;
+            popupTitle.textContent = title;
             popupTitle.className = `text-xl font-bold text-${color}-400`;
-            
-            if (typeof data.lavoro === 'object' && data.lavoro !== null) {
-                 const intensity = data.lavoro.intensita ? `${data.lavoro.intensita}%` : '-';
-                 popupWork.textContent = `Distanza: ${data.lavoro.distanza || '-'} | Serie: ${data.lavoro.serie || '-'} | Intensità: ${intensity}`;
-            } else {
-                 popupWork.textContent = 'Nessun lavoro specificato.';
-            }
+            popupBody.innerHTML = '';
 
-            popupNotes.textContent = data.note || 'Nessuna nota.';
+            if (data && data.length > 0) {
+                data.forEach((workout, index) => {
+                     let workDetails = '';
+                     if (workout.tipo === 'GYM') {
+                         workDetails = `<b>Scheda:</b> ${workout.lavoro?.scheda || '-'}`;
+                     } else {
+                         const intensity = workout.lavoro.intensita ? `${workout.lavoro.intensita}%` : '-';
+                         workDetails = `Distanza: ${workout.lavoro.distanza || '-'} | Serie: ${workout.lavoro.serie || '-'} | Intensità: ${intensity}`;
+                     }
+
+                     const notes = workout.note || 'Nessuna nota.';
+
+                     const workoutHTML = `
+                        <div class="mb-4 ${index > 0 ? 'border-t border-slate-700 pt-4' : ''}">
+                             <h4 class="text-md font-bold text-slate-300 mb-2">${workout.tipo || 'Allenamento'} #${index + 1}</h4>
+                             <p class="bg-slate-900 p-3 rounded-md mb-2 text-sm">${workDetails}</p>
+                             <p class="bg-slate-900 p-3 rounded-md whitespace-pre-wrap text-sm">${notes}</p>
+                        </div>
+                     `;
+                     popupBody.innerHTML += workoutHTML;
+                });
+            } else {
+                 popupBody.innerHTML = '<p>Nessun allenamento specificato.</p>';
+            }
             
             workoutPopup.classList.remove('opacity-0', 'pointer-events-none');
             popupContent.classList.remove('scale-95');
@@ -764,8 +848,43 @@
         }
 
         function markChanges() { hasUnsavedChanges = true; }
-        const formInputs = [ morningTypeInput, morningDistanceInput, morningSeriesInput, morningIntensityInput, morningNotesInput, afternoonTypeInput, afternoonDistanceInput, afternoonSeriesInput, afternoonIntensityInput, afternoonNotesInput ];
-        formInputs.forEach(input => input.addEventListener('input', markChanges));
+        
+        dataEntryForm.addEventListener('input', (e) => {
+            if (e.target.matches('input, select, textarea')) {
+                markChanges();
+            }
+        });
+        
+        dataEntryForm.addEventListener('change', (e) => {
+            if (e.target.matches('.workout-type')) {
+                const block = e.target.closest('.workout-block');
+                const standardFields = block.querySelector('.standard-fields');
+                const gymFields = block.querySelector('.gym-fields');
+                
+                if (e.target.value === 'GYM') {
+                    standardFields.classList.add('hidden');
+                    gymFields.classList.remove('hidden');
+                } else {
+                    standardFields.classList.remove('hidden');
+                    gymFields.classList.add('hidden');
+                }
+                markChanges();
+            }
+        });
+
+        dataEntryForm.addEventListener('click', (e) => {
+            if (e.target.closest('.remove-workout-btn')) {
+                const blockToRemove = e.target.closest('.workout-block');
+                const container = blockToRemove.parentElement;
+                blockToRemove.remove();
+                // Ensure at least one block remains
+                if (container.children.length === 0) {
+                    addWorkoutBlock(container);
+                }
+                markChanges();
+            }
+        });
+
 
         bannerSaveBtn.addEventListener('click', async () => {
             await saveWorkoutData();
@@ -801,6 +920,9 @@
             intensityFormContent.classList.toggle('hidden');
             intensityArrow.classList.toggle('rotate-180');
         });
+
+        addMorningWorkoutBtn.addEventListener('click', () => addWorkoutBlock(morningWorkoutsContainer));
+        addAfternoonWorkoutBtn.addEventListener('click', () => addWorkoutBlock(afternoonWorkoutsContainer));
 
         saveDataBtn.addEventListener('click', saveWorkoutData);
         saveIntensityRangeBtn.addEventListener('click', saveIntensityRange);
